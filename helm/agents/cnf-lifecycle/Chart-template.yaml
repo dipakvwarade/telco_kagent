@@ -1,0 +1,5 @@
+apiVersion: v2
+name: cnf-lifecycle-agent
+description: A Cloud-Native Network Function Lifecycle Agent for kagent
+type: application
+version: ${VERSION}

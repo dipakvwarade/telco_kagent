@@ -278,6 +278,16 @@ helm-agents:
 	helm package -d $(HELM_DIST_FOLDER) helm/agents/cilium-debug
 	VERSION=$(VERSION) envsubst < helm/agents/cilium-manager/Chart-template.yaml > helm/agents/cilium-manager/Chart.yaml
 	helm package -d $(HELM_DIST_FOLDER) helm/agents/cilium-manager
+	VERSION=$(VERSION) envsubst < helm/agents/5g-core/Chart-template.yaml > helm/agents/5g-core/Chart.yaml
+	helm package -d $(HELM_DIST_FOLDER) helm/agents/5g-core
+	VERSION=$(VERSION) envsubst < helm/agents/cnf-lifecycle/Chart-template.yaml > helm/agents/cnf-lifecycle/Chart.yaml
+	helm package -d $(HELM_DIST_FOLDER) helm/agents/cnf-lifecycle
+	VERSION=$(VERSION) envsubst < helm/agents/network-service-assurance/Chart-template.yaml > helm/agents/network-service-assurance/Chart.yaml
+	helm package -d $(HELM_DIST_FOLDER) helm/agents/network-service-assurance
+	VERSION=$(VERSION) envsubst < helm/agents/network-slice/Chart-template.yaml > helm/agents/network-slice/Chart.yaml
+	helm package -d $(HELM_DIST_FOLDER) helm/agents/network-slice
+	VERSION=$(VERSION) envsubst < helm/agents/telco-edge/Chart-template.yaml > helm/agents/telco-edge/Chart.yaml
+	helm package -d $(HELM_DIST_FOLDER) helm/agents/telco-edge
 
 .PHONY: helm-tools
 helm-tools:
@@ -357,6 +367,11 @@ helm-publish: helm-version
 	helm push ./$(HELM_DIST_FOLDER)/cilium-manager-agent-$(VERSION).tgz $(HELM_REPO)/kagent/agents
 	helm push ./$(HELM_DIST_FOLDER)/cilium-debug-agent-$(VERSION).tgz $(HELM_REPO)/kagent/agents
 	helm push ./$(HELM_DIST_FOLDER)/kgateway-agent-$(VERSION).tgz $(HELM_REPO)/kagent/agents
+	helm push ./$(HELM_DIST_FOLDER)/5g-core-agent-$(VERSION).tgz $(HELM_REPO)/kagent/agents
+	helm push ./$(HELM_DIST_FOLDER)/cnf-lifecycle-agent-$(VERSION).tgz $(HELM_REPO)/kagent/agents
+	helm push ./$(HELM_DIST_FOLDER)/network-service-assurance-agent-$(VERSION).tgz $(HELM_REPO)/kagent/agents
+	helm push ./$(HELM_DIST_FOLDER)/network-slice-agent-$(VERSION).tgz $(HELM_REPO)/kagent/agents
+	helm push ./$(HELM_DIST_FOLDER)/telco-edge-agent-$(VERSION).tgz $(HELM_REPO)/kagent/agents
 
 .PHONY: kagent-cli-install
 kagent-cli-install: use-kind-cluster build-cli-local helm-version helm-install-provider

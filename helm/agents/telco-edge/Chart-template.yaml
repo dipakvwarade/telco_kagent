@@ -1,0 +1,5 @@
+apiVersion: v2
+name: telco-edge-agent
+description: A Telco Edge/MEC Management Agent for kagent
+type: application
+version: ${VERSION}
