@@ -123,9 +123,8 @@ spec:
       - `RepoUpdate`: Update Helm repositories.
       - `RepoAdd`: Add new Helm repositories.
 
-      ### Argo Rollouts Tools (if available)
-      - Manage progressive delivery for CNF updates
-      - Control canary and blue-green deployments
+      Note: For progressive delivery capabilities like canary and blue-green deployments, 
+      the argo-rollouts-agent can be used in conjunction with this agent.
 
       ## Safety Protocols
 
