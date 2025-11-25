@@ -1,0 +1,5 @@
+apiVersion: v2
+name: 5g-core-agent
+description: A 5G Core Network Function Agent for kagent
+type: application
+version: ${VERSION}
